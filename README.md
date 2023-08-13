@@ -1,10 +1,13 @@
-1. laravel new forpdf
-2. composer require barryvdh/laravel-dompdf
-3. php artisan make:controller PDFController
-4. php artisan tinker
+1. `laravel new forpdf`
+2. `composer require barryvdh/laravel-dompdf`
+3. `php artisan make:controller PDFController`
+4.
+```
+   php artisan tinker
     => User::factory()->count(10)->create()
-
-5. PDFController.php
+```
+5. `PDFController.php`
+```
 use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
 
@@ -23,12 +26,14 @@ class PDFController extends Controller
         return $pdf->stream();
     }
 }
-
-6. web.php
+```
+6. `web.php`
+```
 use App\Http\Controllers\PDFController;
 Route::get('generate-pdf', [PDFController::class, 'generatePDF']);
-
-7. mypdf.blade.php
+```
+8. `mypdf.blade.php`
+```
 <h1> {{ $title }} </h1>
     <p> {{ $date }} </p>
     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt nulla dolores, provident fuga repellat hic
@@ -53,3 +58,4 @@ Route::get('generate-pdf', [PDFController::class, 'generatePDF']);
             @endforeach
         </tbody>
     </table>
+```
